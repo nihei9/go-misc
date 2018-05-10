@@ -1,0 +1,22 @@
+syntax = "proto3";
+package pb;
+
+service Bookshelf {
+    rpc Lookup(LookupRequest) returns (BookRecord) {}
+}
+
+message LookupRequest {
+    string title = 1;
+}
+
+enum BookCategory {
+    MAGAZINE = 0;
+    CARTOON = 1;
+}
+
+message BookRecord {
+    string title = 1;
+    string auther = 2;
+    string publicatioin_date = 3;
+    BookCategory category = 4;
+}
