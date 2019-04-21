@@ -26,6 +26,9 @@ func main() {
 		time.Sleep(1 * time.Second)
 	}
 
+	l1.close()
+	l2.close()
+
 	time.Sleep(3 * time.Second)
 }
 
@@ -52,6 +55,10 @@ func newLogger(env string, app string, ver string) (*Logger, error) {
 		ver: ver,
 		c:   c,
 	}, nil
+}
+
+func (l *Logger) close() {
+	l.c.Close()
 }
 
 func (l *Logger) error(logID string, message string) {
