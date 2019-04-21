@@ -12,8 +12,9 @@ func main() {
 	c2 := &Logger{
 		lv: zapcore.WarnLevel,
 	}
+	c3 := zapcore.NewCore(zapcore.NewJSONEncoder(), zapcore.AddSync(), zapcore.InfoLevel)
 	
-	l := zap.New(zapcore.NewTee(c1, c2))
+	l := zap.New(zapcore.NewTee(c1, c2, c3))
 
 	l.Debug("Hi")
 	l.Info("Hi")
